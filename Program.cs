@@ -18,6 +18,7 @@ class Program
     static void Main(string[] args)
     {
         botClient=new TelegramBotClient(Token);
+        var me = botClient.GetMeAsync().Result;
         botClient.GetUpdatesAsync().Wait(1000);
         Console.ReadLine();
         botClient.StartReceiving(Updater, Erorr);
@@ -28,9 +29,9 @@ class Program
         throw new NotImplementedException();
     }
 
-    private static Task Updater(ITelegramBotClient arg1, Update arg2, CancellationToken arg3)
+    private async static Task Updater(ITelegramBotClient botClient, Update update, CancellationToken arg3)
     {
-        throw new NotImplementedException();
+        var messege = update.Message;
     }
 }
 
